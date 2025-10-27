@@ -46,9 +46,7 @@ struct HomeView: View {
     
     @ViewBuilder
     private var paginationView: some View {
-        if !viewModel.state.isLoading &&
-            !viewModel.state.hasReachedFinalPage &&
-            !viewModel.state.allBooks.isEmpty {
+        if viewModel.canFetchNextPage() {
             Spacer(minLength: 1)
                 .onAppear {
                     Task(priority: .userInitiated) { await viewModel.getBooks() }
@@ -92,7 +90,7 @@ private struct BookRow: View {
                 Text(data.placeholderText)
                     .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(.white)
-                    .padding(10)
+                    .padding(20)
                     .background(
                         Circle()
                             .fill(.secondary)

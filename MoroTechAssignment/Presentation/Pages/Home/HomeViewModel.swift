@@ -49,4 +49,11 @@ final class HomeViewModel: ObservableObject {
             state.favouriteIDs.insert(id)
         }
     }
+    
+    func canFetchNextPage() -> Bool {
+        !state.isLoading &&
+        !state.hasReachedFinalPage &&
+        !state.allBooks.isEmpty &&
+        state.bookDemonstrationType != .favourites
+    }
 }
