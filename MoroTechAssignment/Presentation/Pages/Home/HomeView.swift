@@ -92,10 +92,10 @@ private struct BookRow: View {
                 Text(data.placeholderText)
                     .font(.system(size: 20, weight: .bold))
                     .foregroundStyle(.white)
-                    .padding(20)
+                    .padding(10)
                     .background(
                         Circle()
-                            .fill(.gray)
+                            .fill(.secondary)
                     )
             }
         }
